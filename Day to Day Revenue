@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+			<title>Deegajanu Book Shop</title>
+	</head>		
+	<body>
+	
+		<?php
+		// connect to the php file to the database
+
+		$database="deegajanu"; //database name
+		$con = mysql_connect("localhost","root" ,"");//for wamp 3rd feild is balnk
+		if (!$con)
+		{
+		die('Could not connect: ' . mysql_error());
+		}
+		mysql_select_db("$database", $con); 
+		?>
+			
+		<font color ="red" size="6">Daily Revenues :-</font>
+		<table cellspacing="0" cellpadding="0" border="1">
+			<col width="130">
+			<col width="130">
+			<col width="130">
+			<col width="130">
+			<col width="130">
+			
+			<tr>
+				<td align="center">Date</td>
+				<td align="center">Total Book Price</td>
+				<td align="center">Total Others Price</td>
+				<td align="center">Discount</td>
+				<td align="center">Grand Revenue </td>
+				
+			</tr>
+
+			<?php 
+			$c1 = mysql_query("SELECT Day FROM brevenue where Year = 2014 and Month = 12 ORDER BY Day DESC LIMIT 1 ");
+			$r1 = mysql_fetch_array($c1) ;
+			$d1 = $r1['Day'];
+			$c2 = mysql_query("SELECT Day FROM orevenue where Year = 2014 and Month = 12 ORDER BY Day DESC LIMIT 1 ");
+			$r2 = mysql_fetch_array($c2) ;
+			$d2 = $r2['Day'];
+			if($d1 >= $d2){ 
+				$d = $d1;
+			}
+			else{
+				$d = $d2;
+			}
+			
+			?>
+			<?php
+				$btot1 = 0;
+				$otot1 = 0;
+				$dtot1 = 0;
+				$ftot1 = 0;
+				for ($k=6; $k <= $d; $k++) :	
+					$cust1 = mysql_query("select sum1 from brevenue where Year = 2014 and Month = 12 and Day = '$k'"); 
+					$row1 = mysql_fetch_array($cust1) ; 											
+					$dis = $row1['sum1'] * 15/100;
+					$btot1 += $row1['sum1'];
+					$dtot1 += $dis;
+			
+					$cust2 = mysql_query("select sum2 from orevenue where Year = 2014 and Month = 12 and Day = '$k'"); 
+					$row2 = mysql_fetch_array($cust2) ;
+					$otot1 += $row2['sum2'];
+					$ftot1 += ($row1['sum1'] + $row2['sum2'] - $dis);
+					?>
+					<tr>
+						<td align="center"><font size="3px">  <?php echo "2014-12-"; echo $k;?> </font></td>
+						<td align="right"><font size="3px"> <?php echo $row1['sum1'] ?> </font></td>
+						<td align="right"><font size="3px">  <?php echo $row2['sum2'] ?> </font></td>
+						<td align="right"><font size="3px"> <?php echo $dis?> </font></td>
+						<td align="right"><font size="3px">  <?php echo ($row2['sum2']+$row1['sum1']-$dis)?> </font></td>
+						
+						
+					</tr>
+			<?php endfor; ?>
+			
+			<?php 
+			$c1 = mysql_query("SELECT Day FROM brevenue where Year = 2015 and Month = 1 ORDER BY Day DESC LIMIT 1 ");
+			$r1 = mysql_fetch_array($c1) ;
+			$d1 = $r1['Day'];
+			$c2 = mysql_query("SELECT Day FROM orevenue where Year = 2015 and Month = 1 ORDER BY Day DESC LIMIT 1 ");
+			$r2 = mysql_fetch_array($c2) ;
+			$d2 = $r2['Day'];
+			if($d1 >= $d2){ 
+				$d = $d1;
+			}
+			else{
+				$d = $d2;
+			}
+			
+			?>
+			<?php
+			$btot2 = 0;
+			$otot2 = 0;
+			$dtot2 = 0;
+			$ftot2 = 0;
+				for ($k=6; $k <= $d; $k++) :	
+					$cust1 = mysql_query("select sum1 from brevenue where Year = 2015 and Month = 1 and Day = '$k'"); 
+					$row1 = mysql_fetch_array($cust1) ; 											
+					$dis = $row1['sum1'] * 15/100;
+					$btot2 += $row1['sum1'];
+					$dtot2 += $dis;
+			
+					$cust2 = mysql_query("select sum2 from orevenue where Year = 2015 and Month = 1 and Day = '$k'"); 
+					$row2 = mysql_fetch_array($cust2) ; 
+					$otot2 += $row2['sum2'];
+					$ftot2 += ($row1['sum1'] + $row2['sum2'] - $dis);
+					?>
+					<tr>
+						<td align="center"><font size="3px">  <?php echo "2014-12-"; echo $k;?> </font></td>
+						<td align="right"><font size="3px"> <?php echo $row1['sum1'] ?> </font></td>
+						<td align="right"><font size="3px">  <?php echo $row2['sum2'] ?> </font></td>
+						<td align="right"><font size="3px"> <?php echo $dis?> </font></td>
+						<td align="right"><font size="3px">  <?php echo ($row2['sum2']+$row1['sum1']-$dis)?> </font></td>
+						
+						
+					</tr>
+			<?php endfor; ?>
+				
+		</table><br>
+		<font color ="blue" size="4">Total Book Revenue up to Today :-</font>
+		<font size="4px" color="green">  <?php echo $btot1+$btot2?> </font><br>
+		<font color ="blue" size="4">Total Others Revenue up to Today :-</font>
+		<font size="4px" color="green"> <?php echo $otot1+$otot2 ?> </font><br>
+		<font color ="blue" size="4">Total Discount up to Today :-</font>
+		<font size="4px" color="green">  <?php echo $dtot1+$dtot2 ?> </font><br>
+		<font color ="blue" size="4">Total Revenue up to Today :-</font>
+		<font size="4px" color="green">  <?php echo $ftot1+$ftot2 ?> </font>
+		
+	</body>
+</html>
