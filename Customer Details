@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+			<title>Deegajanu Book Shop</title>
+	</head>		
+	<body>
+	
+		<?php
+		// connect to the php file to the database
+
+		$database="deegajanu"; //database name
+		$con = mysql_connect("localhost","root" ,"");//for wamp 3rd feild is balnk
+		if (!$con)
+		{
+		die('Could not connect: ' . mysql_error());
+		}
+		mysql_select_db("$database", $con); 
+		?>
+		<?php
+		$bcount = mysql_query("SELECT * FROM bamount ORDER BY custId DESC LIMIT 1");				
+		$numrow1 = mysql_fetch_array($bcount);
+		$num1 = $numrow1[0];
+		
+		$ocount = mysql_query("SELECT * FROM oamount ORDER BY custId DESC LIMIT 1");				
+		$numrow2 = mysql_fetch_array($ocount);
+		$num2 = $numrow2[0];
+				
+		if($num1 >= $num2){ 
+			$num = $num1;
+		}
+		else{
+			$num = $num2;
+		}
+		$count1 = mysql_query("SELECT count(*) FROM bamount ");	
+		$nnumrow1 = mysql_fetch_array($count1);
+		$nnum1 = $nnumrow1[0];
+		
+		$count2 = mysql_query("SELECT count(*) FROM oamount ");	
+		$nnumrow2 = mysql_fetch_array($count2);
+		$nnum2 = $nnumrow2[0];
+
+		if($nnum1 >= $nnum2){ 
+			$nnum = $nnum1;
+		}
+		else{
+			$nnum = $nnum2;
+		}
+		?>
+	
+		<font color ="blue" size="5">No Of Customers :-</font><font size="5px" color="green">  <?php echo $nnum ?> </font><br> <br>
+			
+		<font color ="red" size="6">Customer details :-</font>
+		<table cellspacing="0" cellpadding="0" border="1">
+			<col width="130">
+			<col width="130">
+			<col width="130">
+			<col width="130">
+			<col width="130">
+			
+			<tr>
+				<td align="center">Customer NO</td>
+				<td align="center">Total Book Price</td>
+				<td align="center">Total Others Price</td>
+				<td align="center">Discount</td>
+				<td align="center">Grand Total </td>
+				
+			</tr>
+
+			<?php for($i=1; $i<$num+1; $i++) : ?>
+					<?php $cust1 = mysql_query("select custId,total,discount from bamount where CustId = '$i'"); ?>
+					<?php $row1 = mysql_fetch_array($cust1) ; ?>
+					<?php $cust2 = mysql_query("select custId,ototal from oamount where custId = '$i'"); ?>
+					<?php $row2 = mysql_fetch_array($cust2) ; 
+					
+					if ($row2['custId'] == 0) $cust = $row1['custId'];
+					elseif ($row1['custId'] == 0) $cust = $row2['custId'];
+					else $cust = $row1['custId'];
+					
+					?>
+					<tr>
+						<td align="right" ><font size="3px">  <?php echo $cust ?> </font></td>
+						<td align="right"><font size="3px"> <?php echo $row1['total'] ?> </font></td>
+						<td align="right" ><font size="3px">  <?php echo $row2['ototal'] ?> </font></td>
+						<td align="right"><font size="3px"> <?php echo $row1['total']-$row1['discount'] ?> </font></td>
+						<td align="right" ><font size="3px">  <?php echo $row2['ototal']+$row1['discount']?> </font></td>
+						
+						
+					</tr>
+			
+			
+				
+			<?php endfor; ?>
+			</table>
+		
+	</body>
+</html>
