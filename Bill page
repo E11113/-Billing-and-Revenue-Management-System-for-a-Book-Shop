@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+	<head>
+			<title>Deegajanu Book Shop</title>
+	</head>		
+	<body> 	
+		
+	<?php
+		// connect to the php file to the database
+
+		$database="deegajanu"; //database name
+		$con = mysql_connect("localhost","root" ,"");//for wamp 3rd feild is balnk
+		if (!$con)
+		{
+		die('Could not connect: ' . mysql_error());
+		}
+		mysql_select_db("$database", $con);
+
+		$lstcustnum1 = mysql_query("SELECT custId FROM buy ORDER BY custId DESC LIMIT 1"); 
+		$row1 = mysql_fetch_array($lstcustnum1); $val1 = $row1['custId'];
+
+		$lstcustnum2 = mysql_query("SELECT CustId FROM other ORDER BY CustId DESC LIMIT 1"); 
+		$row2 = mysql_fetch_array($lstcustnum2); $val2 = $row2['CustId'];
+	
+		if($val1 >= $val2){ 
+			$val = $val1;
+		}
+		else{
+			$val = $val2;
+		}
+
+		$val++;
+		?>	
+	
+		<marquee behavior="scroll" direction="left"><font color="Green"><i><b>Welcome to Deegajanu Family</b></i></font></marquee>
+		<h1 style ="width:100%;margin-left:50px;" ><font color ="red">DEEGAJANU PRINTERS AND BOOKSHOP</font></h1>
+		<hr style ="width:60%;margin-left:50px;color:red;size:5"> 
+
+
+	<table style="width:60%;height:200;margin-left:30px;">
+
+		<tr>
+	    	<td>
+
+			<h3 align ="Center"><font color ="blue"><b>No-68/2, Janasavi Complex,</b></font></h3>
+			<p align ="Center"><font color ="blue"><b>Kurunegala Road, </b></font></p> 
+			<p align ="Center"><font color ="blue"><b>Puttalam.</b></font></p> </p>
+
+		</td>
+		 <td>	<p align="center" style="color:green;"><b>
+			Today :
+			<span id="spanDate"></span>
+
+			<script type="text/javascript">
+           		var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];       
+			var today = new Date();
+			today.setTime(today.getTime()); 
+			document.getElementById("spanDate").innerHTML = today.getFullYear() + "-" + months[today.getMonth()] + "-" + today.getDate();
+			//<?php $day = today.getDate(); ?>
+			 
+
+			</script></b></p>
+			
+			<p align ="center"><font color ="blue" size = "2"><b>T.P :- 032 45 45 009</b></font></p>
+			<p align ="Center"><font color ="blue" size = "2"><b> 071 2 707 107(Manoj) </b></font></p> 
+
+	    	</td>
+		</tr>
+	</table>
+	
+	<form name="form1" action ="kjdxgiurtui541444udr.php" method ="POST"> 
+			<input type="hidden" name="day" id="day"  />
+			<input type = "hidden" name = "year" id="year">
+			<input type = "hidden" name = "month" id="month">
+			 
+			<script type="text/javascript">
+			   	var months = [1,2,3,4,5,6,7,8,9,10,11,12]; 
+				document.getElementById("day").value = today.getDate();
+				document.getElementById("month").value = months[today.getMonth()] ;
+				document.getElementById("year").value = today.getFullYear();
+			</script>
+			<table>
+				<tr>
+					<td>
+						<h3 style="margin-left:50px;font-weight:bold;">Customer Number : </h3>
+					</td>
+				<td>
+					<input type="text" name="custnum" id="txtid1" value="<?php echo htmlentities($val) ?>" style="width:70px" /> 					
+				</td>
+				</tr>
+			</table>
+
+			<table style="width:80%;margin-left:50px">
+
+				<tr>
+				<td style="border:3px solid olive;border-width:2;float:left;"><center>
+				
+				<table width="350">
+
+					<col width="130">
+					<col width="80">
+
+					<tr>
+							
+						<p align="Center"><b><font color ="blue">Fill the following details about the books<br>that taken by the customer</font></b></p><br>
+					<tr>
+
+					<tr style="background-color:Red;color:white;">
+					
+						<th>Book Type</th>
+						<th>Quantity</th>
+
+					</tr>
+					<tr>
+						<th>Exercise 20</th>
+						<td align="center"><input type = "text" name = "ex20" style="width:100px;"></td>
+				
+					</tr>
+					<tr>
+						<th>Exercise 40</th>
+						<td align="center"><input type = "text" name = "ex40" style="width:100px;"></td>
+					</tr>
+					<tr>
+						<th>Exercise 80</th>
+						<td align="center"><input type = "text" name = "ex80" style="width:100px;"></td>
+					</tr>
+					<tr>
+						<th>Exercise 120</th>
+						<td align="center"><input type = "text" name = "ex120" style="width:100px;"></td>
+					</tr>
+					<tr>
+						<th>Exercise 160</th>
+						<td align="center"><input type = "text" name = "ex160" style="width:100px;"></td>
+					</tr>
+
+					<tr>
+						<th>Exercise 200</th>
+						<td align="center"><input type = "text" name = "ex200" style="width:100px;"></td>
+				
+					</tr>
+					<tr>
+						<th>Exercise 240</th>
+						<td align="center"><input type = "text" name = "ex240" style="width:100px;"></td>
+					</tr>
+					<tr>
+						<th>Exercise 320</th>
+						<td align="center"><input type = "text" name = "ex320" style="width:100px;"></td>
+					</tr>
+					<tr>
+						<th>Exercise 400</th>
+						<td align="center"><input type = "text" name = "ex400" style="width:100px;"></td>
+					</tr>
+					<tr>
+						<th>CR 20</th>
+						<td align="center"><input type = "text" name = "cr20" style="width:100px;"></td>
+				
+					</tr>
+					<tr>
+						<th>CR 40</th>
+						<td align="center"><input type = "text" name = "cr40" style="width:100px;"></td>
+					</tr>
+					<tr>
+						<th>CR 80</th>
+						<td align="center"><input type = "text" name = "cr80" style="width:100px;"></td>
+					</tr>
+					<tr>
+						<th>CR 120</th>
+						<td align="center"><input type = "text" name = "cr120" style="width:100px;"></td>
+					</tr>
+					<tr>
+						<th>CR 160</th>
+						<td align="center"><input type = "text" name = "cr160" style="width:100px;"></td>
+					</tr>
+
+					<tr>
+						<th>CR 200</th>
+						<td align="center"><input type = "text" name = "cr200" style="width:100px;"></td>
+				
+					</tr>
+
+					<tr>
+						<th>CR 400</th>
+						<td align="center"><input type = "text" name = "cr400" style="width:100px;"></td>
+					</tr>
+
+					<tr>
+						<th>White Drawing 20</th>
+						<td align="center"><input type = "text" name = "wdr20" style="width:100px;"></td>
+					</tr>
+
+					<tr>
+						<th>White Drawing 40</th>
+						<td align="center"><input type = "text" name = "wdr40" style="width:100px;"></td>
+					</tr>
+
+					<tr>
+						<th>White Drawing 80</th>
+						<td align="center"><input type = "text" name = "wdr80" style="width:100px;"></td>
+					</tr>
+
+					<tr>
+						<th>Black Drawing 20</th>
+						<td align="center"><input type = "text" name = "bdr20" style="width:100px;"></td>
+					</tr>
+
+					<tr>
+						<th>Black Drawing 40</th>
+						<td align="center"><input type = "text" name = "bdr40" style="width:100px;"></td>
+					</tr>
+
+					<tr>
+						<th>Black Drawing 80</th>
+						<td align="center"><input type = "text" name = "bdr80" style="width:100px;"></td>
+					</tr>
+
+					<tr>
+						<th>Science 80</th>
+						<td align="center"><input type = "text" name = "sci80" style="width:100px;"></td>
+					</tr>
+
+					<tr>
+						<th>Science 120</th>
+						<td align="center"><input type = "text" name = "sci120" style="width:100px;"></td>
+					</tr>
+
+
+			
+				</table> </center><br>
+				</td>
+
+				 <td style="border:3px solid olive;border-width:2;float:left;"><center>
+				
+				<table width="300">
+
+					<tr>
+							
+						<p align="Center"><b><font color ="blue">Fill the following details about the other<br>items that taken by the customer</font></b></p><br>
+					<tr>
+
+					<tr style="background-color:Red;color:white;">
+					
+						<th>Item Price/Rs.</th>
+						<th>Quantity</th>
+
+					</tr>
+					<tr>
+						<td align="center">01. <input type = "text" name = "price1" style="width:100px;"></td>
+						<td align="center"><input type = "text" name = "rate1" style="width:100px;"></td>
+				
+					</tr>
+					<tr>
+						<td align="center">02. <input type = "text" name = "price2" style="width:100px;"></td>
+						<td align="center"><input type = "text" name = "rate2" style="width:100px;"></td>
+					</tr>
+					<tr>
+						<td align="center">03. <input type = "text" name = "price3" style="width:100px;"></td>
+						<td align="center"><input type = "text" name = "rate3" style="width:100px;"></td>
+					</tr>
+					<tr>
+						<td align="center">04. <input type = "text" name = "price4" style="width:100px;"></td>
+						<td align="center"><input type = "text" name = "rate4" style="width:100px;"></td>
+					</tr>
+					<tr>
+						<td align="center">05. <input type = "text" name = "price5" style="width:100px;"></td>
+						<td align="center"><input type = "text" name = "rate5" style="width:100px;"></td>
+					</tr>
+
+					<tr>
+						<td align="center">06. <input type = "text" name = "price6" style="width:100px;"></td>
+						<td align="center"><input type = "text" name = "rate6" style="width:100px;"></td>
+				
+					</tr>
+					<tr>
+						<td align="center">07. <input type = "text" name = "price7" style="width:100px;"></td>
+						<td align="center"><input type = "text" name = "rate7" style="width:100px;"></td>
+					</tr>
+					<tr>
+						<td align="center">08. <input type = "text" name = "price8" style="width:100px;"></td>
+						<td align="center"><input type = "text" name = "rate8" style="width:100px;"></td>
+					</tr>
+					<tr>
+						<td align="center">09. <input type = "text" name = "price9" style="width:100px;"></td>
+						<td align="center"><input type = "text" name = "rate9" style="width:100px;"></td>
+					</tr>
+					<tr>
+						<td align="center">10. <input type = "text" name = "price10" style="width:100px;"></td>
+						<td align="center"><input type = "text" name = "rate10" style="width:100px;"></td>
+				
+					</tr>
+					<tr>
+						<td align="center">11. <input type = "text" name = "price11" style="width:100px;"></td>
+						<td align="center"><input type = "text" name = "rate11" style="width:100px;"></td>
+					</tr>
+					<tr>
+						<td align="center">12. <input type = "text" name = "price12" style="width:100px;"></td>
+						<td align="center"><input type = "text" name = "rate12" style="width:100px;"></td>
+					</tr>
+					<tr>
+						<td align="center">13. <input type = "text" name = "price13" style="width:100px;"></td>
+						<td align="center"><input type = "text" name = "rate13" style="width:100px;"></td>
+					</tr>
+					<tr>
+						<td align="center">14. <input type = "text" name = "price14" style="width:100px;"></td>
+						<td align="center"><input type = "text" name = "rate14" style="width:100px;"></td>
+					</tr>
+
+					<tr>
+						<td align="center">15. <input type = "text" name = "price15" style="width:100px;"></td>
+						<td align="center"><input type = "text" name = "rate15" style="width:100px;"></td>
+					</tr>
+
+					<tr>
+						<td align="center">16. <input type = "text" name = "price16" style="width:100px;"></td>
+						<td align="center"><input type = "text" name = "rate16" style="width:100px;"></td>
+					</tr>
+
+					<tr>
+						<td align="center">17. <input type = "text" name = "price17" style="width:100px;"></td>
+						<td align="center"><input type = "text" name = "rate17" style="width:100px;"></td>
+					</tr>
+					<tr>
+						<td align="center">18. <input type = "text" name = "price18" style="width:100px;"></td>
+						<td align="center"><input type = "text" name = "rate18" style="width:100px;"></td>
+					</tr>
+					<tr>
+						<td align="center">19. <input type = "text" name = "price19" style="width:100px;"></td>
+						<td align="center"><input type = "text" name = "rate19" style="width:100px;"></td>
+					</tr>
+					<tr>
+						<td align="center">20. <input type = "text" name = "price20" style="width:100px;"></td>
+						<td align="center"><input type = "text" name = "rate20" style="width:100px;"></td>
+				
+					</tr>
+					<tr>
+						<td align="center">21. <input type = "text" name = "price21" style="width:100px;"></td>
+						<td align="center"><input type = "text" name = "rate21" style="width:100px;"></td>
+					</tr>
+					<tr>
+						<td align="center">22. <input type = "text" name = "price22" style="width:100px;"></td>
+						<td align="center"><input type = "text" name = "rate22" style="width:100px;"></td>
+					</tr>
+					<tr>
+						<td align="center">23. <input type = "text" name = "price23" style="width:100px;"></td>
+						<td align="center"><input type = "text" name = "rate23" style="width:100px;"></td>
+					</tr>
+					<tr>
+						<td align="center">24. <input type = "text" name = "price24" style="width:100px;"></td>
+						<td align="center"><input type = "text" name = "rate24" style="width:100px;"></td>
+					</tr>
+
+			
+				</table> </center><br>
+				</td>
+				</tr>
+			</table><br><br><br>
+			<input type = "submit" value = "Submit" style = "margin-left:100px">
+
+			<input type="reset" value="Reset">
+	</form>
+
+	<p align="left" style="margin-left:50px"><font size="2"><i>Designed by : </i> M.S.Danushka Eranga</font><font size="1"> (Computer Engineer / 071-183 20 65)</font></p>
+	
+	
+
+	</body>
+</html>
