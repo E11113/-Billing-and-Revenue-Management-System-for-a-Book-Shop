@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+			<title>deegajanu</title>
+	</head>		
+	<body> 	
+		<marquee behavior="scroll" direction="left"><font color="Green"><i><b>Welcome to Deegajanu Family</b></i></font></marquee>
+		<h1 style ="width:80%;margin-left:240px;" ><font color ="red">DEEGAJANU PRINTERS AND BOOKSHOP</font></h1>
+		<hr style ="width:80%;margin-left:50px;color:red;size:5"> 
+
+
+	<table style="width:80%;height:200;margin-left:30px;">
+
+		<tr>
+	    	<td>
+
+			<h3 align ="Center"><font color ="blue"><b>No-68/2, Janasavi Complex,</b></font></h3>
+			<p align ="Center"><font color ="blue"><b>Kurunegala Road, </b></font></p> 
+			<p align ="Center"><font color ="blue"><b>Puttalam.</b></font></p> </p>
+
+			</td>
+			<td>	<p align="center" style="color:green;"><b>
+				Today :
+				<span id="spanDate"></span>
+
+				<script type="text/javascript">
+					var months = ['January','February','March','April','May','June','July',
+				'August','September','October','November','December'];       
+				var today = new Date();
+				today.setTime(today.getTime()); 
+				document.getElementById("spanDate").innerHTML = today.getFullYear() + "-" + months[today.getMonth()] + "-" + today.getDate();
+				//<?php $day = today.getDate(); ?>
+				 
+
+				</script></b></p>
+				
+				<p align ="center"><font color ="blue" size = "2"><b>T.P :- 032 45 45 009</b></font></p>
+				<p align ="Center"><font color ="blue" size = "2"><b> 071 2 707 107(Manoj) </b></font></p> 
+
+	    	</td>
+		</tr>
+	 
+		<tr>
+			<td>
+				<p align ="center"><img src="pic1.jpg" alt="study1" style="width:304px;height:228px"></p>
+			</td>
+			<td>
+				<p align ="center"><img src="teksons books 3.jpg" alt="study2" style="width:304px;height:228px"></p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p align ="center"><a href="http://localhost/srkgtuorituhjmerj58tiju2.php">Make A Bill</a></p>
+			</td>
+			<td>
+				<p align ="center"><a href="http://localhost/isfuy87498w9jd5srvtujriot4rt.html">Details Of Book Shop </a></p>
+			</td>
+		</tr>
+	</table>
+			
+
+
+	<p align="left" style="margin-left:50px"><font size="2"><i>Designed by : </i> M.S.Danushka Eranga</font><font size="1"> (Computer Engineer / 071-183 20 65)</font></p>
+	
+	
+
+	</body>
+</html>
