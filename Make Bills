@@ -1,0 +1,301 @@
+
+
+<html>
+	<head>
+	<title>Deegajanu Book Shop</title>
+	</head>
+	<body>
+
+	<?php $custnum = $_POST['custnum']; if($custnum != NULL) { ?>  
+		<?php
+		// connect to the php file to the database
+
+		$database="deegajanu"; //database name
+		$con = mysql_connect("localhost","root" ,"");//for wamp 3rd feild is balnk
+		if (!$con)
+		{
+		die('Could not connect: ' . mysql_error());
+		}
+		mysql_select_db("$database", $con);
+		 
+		// put values to variables from html
+		//if(isset($_POST['custnum'])){
+		
+		$year = $_POST['year'];
+		$month = $_POST['month'];
+		$day = $_POST['day'];
+		
+		$ex20 = $_POST['ex20'];
+		$ex40 = $_POST['ex40'];
+		$ex80 = $_POST['ex80'];
+		$ex120 = $_POST['ex120'];
+		$ex160 = $_POST['ex160'];
+		$ex200 = $_POST['ex200'];
+		$ex240 = $_POST['ex240'];
+		$ex320 = $_POST['ex320'];
+		$ex400 = $_POST['ex400'];
+		
+		$cr20 = $_POST['cr20'];
+		$cr40 = $_POST['cr40'];
+		$cr80 = $_POST['cr80'];
+		$cr120 = $_POST['cr120'];
+		$cr160 = $_POST['cr160'];
+		$cr200 = $_POST['cr200'];
+		$cr400 = $_POST['cr400'];
+		
+		$wdr20 = $_POST['wdr20'];
+		$wdr40 = $_POST['wdr40'];
+		$wdr80 = $_POST['wdr80'];
+		$bdr20 = $_POST['bdr20'];
+		$bdr40 = $_POST['bdr40'];
+		$bdr80 = $_POST['bdr80'];
+		
+		$sci80 = $_POST['sci80'];
+		$sci120 = $_POST['sci120'];
+		
+		
+		$price1 = $_POST['price1'];
+		$rate1 = $_POST['rate1'];
+		
+		$price2 = $_POST['price2'];
+		$rate2 = $_POST['rate2'];
+		
+		$price3 = $_POST['price3'];
+		$rate3 = $_POST['rate3'];
+		
+		$price4 = $_POST['price4'];
+		$rate4 = $_POST['rate4'];
+		
+		$price5 = $_POST['price5'];
+		$rate5 = $_POST['rate5'];
+		
+		$price6 = $_POST['price6'];
+		$rate6 = $_POST['rate6'];
+		
+		$price7 = $_POST['price7'];
+		$rate7 = $_POST['rate7'];
+		
+		$price8 = $_POST['price8'];
+		$rate8 = $_POST['rate8'];
+		
+		$price9 = $_POST['price9'];
+		$rate9 = $_POST['rate9'];
+		
+		$price10 = $_POST['price10'];
+		$rate10 = $_POST['rate10'];
+		
+		$price11 = $_POST['price11'];
+		$rate11 = $_POST['rate11'];
+		
+		$price12 = $_POST['price12'];
+		$rate12 = $_POST['rate12'];
+		
+		$price13 = $_POST['price13'];
+		$rate13 = $_POST['rate13'];
+		
+		$price14 = $_POST['price14'];
+		$rate14 = $_POST['rate14'];
+		
+		$price15 = $_POST['price15'];
+		$rate15 = $_POST['rate15'];
+		
+		$price16 = $_POST['price16'];
+		$rate16 = $_POST['rate16'];
+		
+		$price17 = $_POST['price17'];
+		$rate17 = $_POST['rate17'];
+		
+		$price18 = $_POST['price18'];
+		$rate18 = $_POST['rate18'];
+		
+		$price19 = $_POST['price19'];
+		$rate19 = $_POST['rate19'];
+		
+		$price20 = $_POST['price20'];
+		$rate20 = $_POST['rate20'];
+		
+		$price21 = $_POST['price21'];
+		$rate21 = $_POST['rate21'];
+		
+		$price22 = $_POST['price22'];
+		$rate22 = $_POST['rate22'];
+		
+		$price23 = $_POST['price23'];
+		$rate23 = $_POST['rate23'];
+		
+		$price24 = $_POST['price24'];
+		$rate24 = $_POST['rate24'];
+			
+			
+		?>
+							<script type="text/javascript">
+								var date = today.getDate();
+								
+							</script>
+		<?php
+			// put into book_table values to arrays
+			$values = array($ex20,$ex40,$ex80,$ex120,$ex160,$ex200,$ex240,$ex320,$ex400,$cr20,$cr40,$cr80,$cr120,$cr160,$cr200,$cr400,$wdr20,$wdr40,$wdr80,$bdr20,$bdr40,$bdr80,$sci80,$sci120);
+			$names = array("Exercise 20","Exercise 40","Exercise 80","Exercise 120","Exercise 160","Exercise 200","Exercise 240","Exercise 320","Exercise 400","CR 20","CR 40","CR 80","CR 120","CR 160","CR 200","CR 400",
+"White Drawing 20"	,"White Drawing 40"	,"White Drawing 80"	,"Black Drawing 20"	,"Black Drawing 40"	,"Black Drawing 80"	,"Science 80"	,"Science 120");
+
+			//put into other table values to arrays
+			$othprices = array(
+$price1,$price2 ,$price3 ,$price4 ,$price5 ,$price6 ,$price7 ,$price8 ,$price9 ,$price10,$price11,$price12,$price13,$price14,$price15,$price16,$price17,$price18 ,$price19,$price20 ,$price21 ,$price22,$price23,$price24);
+			$othrates = array(
+$rate1 ,$rate2 ,$rate3 ,$rate4 ,$rate5 ,$rate6 ,$rate7 ,$rate8 ,$rate9 ,$rate10 ,$rate11 ,$rate12 ,$rate13 ,$rate14 ,$rate15 ,$rate16,$rate17 ,$rate18 ,$rate19 ,$rate20 ,$rate21 ,$rate22 ,$rate23 ,$rate24 );
+			
+			// insert book_table values into BUY table
+				
+				for($i=0; $i<25; $i++){
+					if(($values[$i] != NULL) || (($othprices[$i]!=NULL)) && ($othrates[$i]!=NULL)){
+						if($values[$i] != NULL){$count1++;}
+						if($values[$i] != NULL){mysql_query("insert into BUY(Year,Month,Day,CustId,BookName,Rate) values ('$year','$month','$day','$custnum','$names[$i]','$values[$i]')");}
+						//else{mysql_query("insert into BUY(Year,Month,Day,CustId,BookName,Rate) values ('$year','$month','$day','$custnum','not taken','$values[$i]')");}
+					}
+				}
+
+				//mysql_query("delete from Other where CustId = '$custnum'");
+				// insert others to OTHER table
+				for($i=0; $i<25; $i++){
+					if(($othprices[$i]!=NULL) && ($othrates[$i]!=NULL)){
+						
+						//if(($othprices[$i]!=NULL) && ($othrates[$i]!=NULL)){$count2++;}
+						if(($othprices[$i]!=NULL) && ($othrates[$i]!=NULL)){mysql_query("insert into Other(Year,Month,Day,CustId,ItemPrice,ItemRate) values ('$year','$month','$day','$custnum','$othprices[$i]','$othrates[$i]')");}
+						//else {mysql_query("insert into Other(Year,Month,Day,CustId,ItemPrice,ItemRate) values ('$year','$month','$day','$custnum','$othprices[$i]','$othrates[$i]')");}
+					}
+				}
+		?>
+
+		<table cellspacing="0" cellpadding="0" border="1">
+			<tr>
+				<td colspan="3" align="center"><b><font size="2px">Deegajanu Bookshop<br> And Printers</font></b></td>
+			</tr>
+			<tr>
+				<td colspan="3"  align="center"><font size="2px">No. 68/2, Janasavi Complex,<br>Kurunagala Rd,<br>Puttalam.<br>T.P :- 032 45 45 009<br>071 2 707 107(Manoj)</font></td>
+			</tr>
+
+			<tr>
+				<td colspan="3" align="center">Date : 
+				<span id="spanDate"></span>
+					<script type="text/javascript">
+						var months = [1,2,3,4,5,6,7,8,9,10,11,12];       
+						var today = new Date();
+						today.setTime(today.getTime()); 
+						document.getElementById("spanDate").innerHTML = today.getFullYear() + "-" + months[today.getMonth()] + "-" + today.getDate();
+					</script>
+				</td>
+			<tr><td colspan="3" align="center">Customer No : <?php echo $custnum ?>
+			
+			</tr>
+				<td colspan="3"><br></td>
+			</tr>		
+			<tr>
+				<td colspan="3" align="center"><b><font size="2px">Books</font></b></td>
+			</tr>
+			<tr>
+				<td align="left"><font size="2px">Book Type</font></td>
+				<td align="center"><font size="2px">Quantity</font></td>
+				<td align="center"><font size="2px">Price</font></td>
+			</tr>
+			
+			<?php $btot = 0; ?>
+			<?php for($i=0; $i<25; $i++) : ?>
+			
+				<?php if($values[$i]!=NULL): ?> 
+					
+					<?php $bprice = mysql_query("select price from Books where BookName = '$names[$i]'"); ?>
+					<?php $row3 = mysql_fetch_array($bprice) ?>
+					
+					<tr>
+						<td><font size="2px"> <?php echo $names[$i] ?> </font></td>
+						<td align="center"><font size="2px"> <?php echo $values[$i] ?> </font></td>
+						<td align="right"><font size="2px"> <?php echo $row3['price']*$values[$i] ?> </font></td>
+					</tr>
+					<?php $btot = $btot + ($row3['price']*$values[$i]); ?>
+				<?php endif; ?>
+				
+			<?php endfor; ?>
+			
+			<tr>
+				<td colspan="2"><font size="2px">Total</font></td>
+				<td align="right"><font size="2px">Rs.<?php echo $btot; ?></font></td>
+			</tr>
+			
+			<tr>
+				<td colspan="3"><br></td>
+			</tr>
+			
+			<tr>
+				<td colspan="3" align="center"><b><font size="2px">Others</b></font></td>
+			</tr>
+			<tr>
+				<td align="left"><font size="2px">Unit Price</font></td>
+				<td align="center"><font size="2px">Quantity</font></td>
+				<td align="center"><font size="2px">Price</font></td>
+			</tr>
+			
+			<?php $otot=0; ?>
+			<?php for($i=0; $i<25; $i++) : ?>
+			
+				<?php if($othprices[$i]!=NULL): ?> 
+					<?php $otot = $otot + ($othprices[$i]*$othrates[$i]); ?>
+					<tr>
+						<td align="center"><font size="2px"> <?php echo $othprices[$i] ?> </font></td>
+						<td align="center"><font size="2px"> <?php echo $othrates[$i] ?> </font></td>
+						<td align="right"><font size="2px"><?php echo $othrates[$i]*$othprices[$i]?> </font></td>
+					</tr>
+				
+				<?php endif; ?>
+				
+			<?php endfor; ?>
+			
+			<tr>
+				<td colspan="2"><font size="2px">Total</font></td>
+				<td align="right"><font size="2px">Rs.<?php echo $otot; ?></font></td>
+			</tr>
+			<tr>
+				<td colspan="3"><br></td>
+			</tr>
+			
+			<tr>
+				<td colspan="2"><font size="2px">No Of Items</font></td>
+				<td align="right"><font size="2px"><?php echo $count1+$count2 ?></font></td>
+			</tr>
+			<tr>
+				<td colspan="2"><font size="2px">Full amount</font></td>
+				<td align="right"><font size="2px">Rs.<?php echo ($otot+$btot); ?></font></td>
+			</tr>
+		
+			<tr>
+				<td colspan="2"><font size="2px">Discount</font></td>
+				<td align="right"><font size="2px">Rs.<?php echo $btot*(15/100)?></font></td>
+			</tr>
+			<tr>
+				<td colspan="2"><font size="2px">Final amount</font></td>
+				<td align="right"><font size="2px">Rs.<?php echo $otot+($btot*85/100); ?></font></td>
+			</tr>
+			
+			<tr>
+				<table border="0">
+					<tr>
+						<td style="height:10px"></td>
+					</tr>
+					<tr>
+						<td>
+							<button  onclick="myFunction()">Thank You For Coming!</button>
+							
+							<script>
+								function myFunction() {
+									location.href = 'srkgtuorituhjmerj58tiju2.php?name=';
+								}
+							</script>
+						</td>
+					</tr>
+				</table>
+			</tr>
+			
+		</table>
+		<?php } else{ ?> <h1><font color="red">Plece Enter the customer Nomber <?php echo $i; ?>  <a href="javascript:history.go(-1)">Go Back</a></h1></font> <?php } ?>
+
+	</body>
+</html>
