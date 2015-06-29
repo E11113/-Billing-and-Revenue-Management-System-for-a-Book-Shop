@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+			<title>Deegajanu Book Shop</title>
+	</head>		
+	<body>
+		<div align="center" style="vertical-align:bottom">
+		<div align="center" style="vertical-align:bottom">
+		<table style="width:60%;height:200;margin-left:30px;">
+
+		<tr>
+	    	<td>
+				<form name="dform1" action ="sfnhlw4erte57erirt3457430.php" method ="POST">
+					<font color ="red" size="8">Customer details</font>
+					<input type = "submit" value = "Go" style = "margin-left:100px">
+				</form>
+			</td>
+			<td>
+				<form name="dform2" action ="kjuybilujtriuter4e587865.php" method ="POST">
+					<font color ="red" size="8">Revenue Details</font>
+					<input type = "submit" value = "Go" style = "margin-left:100px">
+				</form>
+			</td>
+		</tr>
+		</table>
+		</div>
+		</div>
+	</body>
+</html>
